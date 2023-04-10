@@ -5,7 +5,8 @@ from user.models import UserModel
 class TitleModel(models.Model):
     class Meta:
         db_table="title"
-    writer=models.ForeignKey(UserModel, on_delete=models.CASCADE)
+
+    writer=models.ForeignKey(UserModel, on_delete=models.SET_DEFAULT, default=1)
     title=models.CharField(max_length=256)
     content=models.CharField(max_length=256)
     image=models.FileField(upload_to=None,null=True)
